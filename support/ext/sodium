@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+php_version=${1:=7.4}
+sodium_version=2.0.23
+
+curl -L "https://pecl.php.net/get/libsodium-${sodium_version}.tgz" \
+    | tar xzv
+
+cd libsodium-${ds_version}
+/app/vendor/php/bin/phpize
+./configure --with-php-config=/app/vendor/php/bin/php-config
+
+make
+cp modules/libsodium.so "$EXT_DIR/libsodium.so"
+echo "extension=libsodium.so" > "$PREFIX/etc/conf.d/libsodium.ini"
