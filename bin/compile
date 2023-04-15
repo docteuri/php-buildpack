@@ -483,8 +483,8 @@ if [ -f "/app/vendor/php/etc/conf.d/newrelic.ini" ] ; then
     fi
 fi
 
-erb conf/nginx.conf.erb > /app/vendor/nginx/conf/nginx.conf
-erb conf/site.conf.erb > /app/vendor/nginx/conf/site.conf
+erb /app/conf/nginx.conf.erb > /app/vendor/nginx/conf/nginx.conf
+erb /app/conf/site.conf.erb > /app/vendor/nginx/conf/site.conf
 
 if [[ -z \${WEB_CONCURRENCY:-} ]]; then
     ram="512M"
